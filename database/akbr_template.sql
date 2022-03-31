@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2022 at 07:05 PM
+-- Generation Time: Mar 31, 2022 at 07:29 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -265,21 +265,11 @@ INSERT INTO `setting` (`id`, `kode`, `nama`, `nilai`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
-  `ip_address` varchar(45) NOT NULL,
-  `username` varchar(100) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `salt` varchar(255) DEFAULT NULL,
   `email` varchar(254) NOT NULL,
-  `activation_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_time` int(11) UNSIGNED DEFAULT NULL,
-  `remember_code` varchar(40) DEFAULT NULL,
-  `created_on` int(11) UNSIGNED NOT NULL,
-  `last_login` int(11) UNSIGNED DEFAULT NULL,
   `active` tinyint(1) UNSIGNED DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
-  `company` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `image` varchar(128) NOT NULL DEFAULT 'default.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -288,9 +278,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`, `image`) VALUES
-(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@muhakbar.com', '', 'm0vyKu2zW7L8PTG20bquF.707e055aeea8a30aca', 1541329145, 'WcHCQ5vcXwT1z99BvJUWnu', 1268889823, 1648746286, 1, 'Akbar', 'Admin', 'ADMIN', '0', 'akbr_pp_2.jpg'),
-(2, '127.0.0.1', 'member', '$2y$08$ipVAkJ.rjy35wARE9Px47eS2k.gz2FPYy14M019VFwLtBcUax2YJS', '', 'member@member.com', NULL, 'm0vyKu2zW7L8PTG20bquF.707e055aeea8a30aca', 1541329145, 'lHtbqmxsnla1izZ5LcXd9O', 1268889823, 1648601834, 1, 'Member', 'Apps', 'ADMIN', '0', 'default.jpg');
+INSERT INTO `users` (`id`, `password`, `email`, `active`, `first_name`, `last_name`, `phone`, `image`) VALUES
+(1, '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', 'admin@muhakbar.com', 1, 'Akbar', 'Admin', '0', 'akbr_pp_2.jpg'),
+(2, '$2y$08$ipVAkJ.rjy35wARE9Px47eS2k.gz2FPYy14M019VFwLtBcUax2YJS', 'member@member.com', 1, 'Member', 'Apps', '0909090', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -310,7 +300,7 @@ CREATE TABLE `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (3, 1, 1),
-(24, 2, 2);
+(31, 2, 2);
 
 --
 -- Indexes for dumped tables
@@ -430,7 +420,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
