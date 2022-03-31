@@ -307,7 +307,7 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
 
-		$query = $this->db->select('password, salt')
+		$query = $this->db->select('password')
 			->where('id', $id)
 			->limit(1)
 			->order_by('id', 'desc')
@@ -460,7 +460,7 @@ class Ion_auth_model extends CI_Model
 			}
 
 			$data = array(
-				'activation_code' => NULL,
+				// 'activation_code' => NULL,
 				'active'          => 1
 			);
 
@@ -468,7 +468,7 @@ class Ion_auth_model extends CI_Model
 			$this->db->update($this->tables['users'], $data, array('id' => $id));
 		} else {
 			$data = array(
-				'activation_code' => NULL,
+				// 'activation_code' => NULL,
 				'active'          => 1
 			);
 
@@ -513,7 +513,7 @@ class Ion_auth_model extends CI_Model
 		$this->activation_code = $activation_code;
 
 		$data = array(
-			'activation_code' => $activation_code,
+			// 'activation_code' => $activation_code,
 			'active'          => 0
 		);
 
@@ -898,11 +898,11 @@ class Ion_auth_model extends CI_Model
 		// Users table.
 		$data = array(
 			$this->identity_column => $identity,
-			'username' => $identity,
+			// 'username' => $identity,
 			'password' => $password,
-			'email' => $email,
-			'ip_address' => $ip_address,
-			'created_on' => time(),
+			'email' => $identity,
+			// 'ip_address' => $ip_address,
+			// 'created_on' => time(),
 			'active' => ($manual_activation === FALSE ? 1 : 0)
 		);
 
@@ -958,14 +958,13 @@ class Ion_auth_model extends CI_Model
 
 		$this->trigger_events('extra_where');
 
-		$query = $this->db->select($this->identity_column . ', email, id, password, active, last_login')
+		$query = $this->db->select($this->identity_column . ', email, id, password, active')
 			->where($this->identity_column, $identity)
 			->limit(1)
 			->order_by('id', 'desc')
 			->get($this->tables['users']);
 
-		// if ($this->is_max_login_attempts_exceeded($identity))
-		// {
+		// if ($this->is_max_login_attempts_exceeded($identity)) {
 		// 	// Hash something anyway, just to take up time
 		// 	$this->hash_password($password);
 
@@ -990,7 +989,7 @@ class Ion_auth_model extends CI_Model
 
 				$this->set_session($user);
 
-				$this->update_last_login($user->id);
+				// $this->update_last_login($user->id);
 
 				// $this->clear_login_attempts($identity);
 
@@ -1864,7 +1863,7 @@ class Ion_auth_model extends CI_Model
 			$this->identity_column => $user->{$this->identity_column},
 			'email'                => $user->email,
 			'user_id'              => $user->id, //everyone likes to overwrite id so we'll use user_id
-			'old_last_login'       => $user->last_login,
+			// 'old_last_login'       => $user->last_login,
 			'last_check'           => time(),
 		);
 
@@ -1949,7 +1948,7 @@ class Ion_auth_model extends CI_Model
 
 		// get the user
 		$this->trigger_events('extra_where');
-		$query = $this->db->select($this->identity_column . ', id, email, last_login')
+		$query = $this->db->select($this->identity_column . ', id, email')
 			->where($this->identity_column, urldecode(get_cookie($this->config->item('identity_cookie_name', 'ion_auth'))))
 			->where('remember_code', get_cookie($this->config->item('remember_cookie_name', 'ion_auth')))
 			->where('active', 1)
@@ -1961,7 +1960,7 @@ class Ion_auth_model extends CI_Model
 		if ($query->num_rows() == 1) {
 			$user = $query->row();
 
-			$this->update_last_login($user->id);
+			// $this->update_last_login($user->id);
 
 			$this->set_session($user);
 
