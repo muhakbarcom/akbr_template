@@ -402,6 +402,7 @@ class Auth extends CI_Controller
 
 		$tables = $this->config->item('tables', 'ion_auth');
 		$identity_column = $this->config->item('identity', 'ion_auth');
+		$groups = $this->ion_auth->groups()->result_array();
 		$this->data['identity_column'] = $identity_column;
 
 		// validate form input
@@ -430,8 +431,9 @@ class Auth extends CI_Controller
 				'phone' => $this->input->post('phone'),
 
 			);
+			$hak_akses = $this->input->post('groups[]');
 		}
-		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data)) {
+		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data, $hak_akses)) {
 			// check to see if we are creating the user
 			// redirect them back to the admin page
 			$this->session->set_flashdata('success', $this->ion_auth->messages());
@@ -524,7 +526,7 @@ class Auth extends CI_Controller
 			$this->data['crumb'] = [
 				'User' => '',
 			];
-
+			$this->data['groups'] = $groups;
 			$this->data['page'] = 'auth/create_user';
 			$this->load->view('template/backend', $this->data);
 			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
