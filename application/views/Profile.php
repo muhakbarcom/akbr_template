@@ -16,6 +16,7 @@
             <b>Name</b> <a class="pull-right"><?= $user['first_name'] . ' ' . $user['last_name']; ?></a>
           </li>
         </ul>
+        <a href="<?= base_url(); ?>auth/change_password" class="btn bg-green btn-block"><b>Change Password</b></a>
         <a href="<?= base_url(); ?>auth/logout" class="btn bg-purple btn-block"><b>Sign Out</b></a>
       </div>
       <!-- /.box-body -->
