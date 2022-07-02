@@ -54,7 +54,7 @@ $setting_aplikasi = $this->db->get('setting')->row();
               </div>
 
               <div class="clearfix mt-4">
-                <button class="btn btn-warning float-right" type="submit">Login</button>
+                <button class="btn btn-primary float-right" type="submit">Login</button>
               </div>
               <?php echo form_close(); ?>
               <!-- <div class="row"><a href="<?= base_url('auth/register_user'); ?>">Daftar Sekarang</a></div> -->

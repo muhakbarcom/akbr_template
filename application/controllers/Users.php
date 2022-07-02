@@ -66,22 +66,13 @@ class Users extends CI_Controller
         if ($row) {
             $data = array(
                 'id' => $row->id,
-                'ip_address' => $row->ip_address,
-                'username' => $row->username,
                 'password' => $row->password,
-                'salt' => $row->salt,
                 'email' => $row->email,
-                'activation_code' => $row->activation_code,
-                'forgotten_password_code' => $row->forgotten_password_code,
-                'forgotten_password_time' => $row->forgotten_password_time,
-                'remember_code' => $row->remember_code,
-                'created_on' => $row->created_on,
-                'last_login' => $row->last_login,
                 'active' => $row->active,
                 'first_name' => $row->first_name,
                 'last_name' => $row->last_name,
-                'company' => $row->company,
                 'phone' => $row->phone,
+                'image' => $row->image,
             );
             $data['title'] = 'Users';
             $data['subtitle'] = '';

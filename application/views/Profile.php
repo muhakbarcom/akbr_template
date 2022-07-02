@@ -48,6 +48,11 @@
           <input type="text" class="form-control" id="email" value="<?= $user['email']; ?>" name="email">
           <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
+        <div class="form-group">
+          <label for="email">Phone</label>
+          <input type="text" class="form-control" id="phone" value="<?= $user['phone']; ?>" name="phone">
+          <?= form_error('phone', '<small class="text-danger pl-3">', '</small>'); ?>
+        </div>
 
         <div class="form-group">
           <div class="custom-file">

@@ -33,6 +33,7 @@ class Profile extends CI_Controller
 		$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 		$this->form_validation->set_rules('first_name', 'Nama Awal', 'required|trim');
 		$this->form_validation->set_rules('last_name', 'Nama Akhir', 'required|trim');
+		$this->form_validation->set_rules('phone', 'No Telpon', 'required|trim');
 
 		if ($this->form_validation->run() == false) {
 			$data['page'] = 'profile';
@@ -41,6 +42,7 @@ class Profile extends CI_Controller
 			$first_name = $this->input->post('first_name');
 			$last_name = $this->input->post('last_name');
 			$email = $this->input->post('email');
+			$phone = $this->input->post('phone');
 
 			//cek jika ada gambar yang akan diupload
 			$upload_image = $_FILES['image']['name'];
@@ -68,6 +70,7 @@ class Profile extends CI_Controller
 			}
 
 
+			$this->db->set('phone', $phone);
 			$this->db->set('email', $email);
 			$this->db->set('first_name', $first_name);
 			$this->db->set('last_name', $last_name);

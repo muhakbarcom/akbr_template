@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2022 at 05:36 AM
+-- Generation Time: Jul 02, 2022 at 04:09 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -207,17 +207,17 @@ CREATE TABLE `menu` (
 INSERT INTO `menu` (`id_menu`, `sort`, `level`, `parent_id`, `icon`, `label`, `link`, `id`, `id_menu_type`) VALUES
 (1, 0, 1, 0, 'empty', 'MAIN NAVIGATION', '#', '#', 1),
 (3, 1, 2, 1, 'fas fa-tachometer-alt', 'Dashboard', 'dashboard', '#', 1),
-(4, 9, 2, 40, 'fas fa-table', 'CRUD Generator', 'crudbuilder', '1', 1),
-(8, 7, 2, 40, 'fas fa-bars', 'Menu', 'cms/menu/side-menu', 'navMenu', 1),
-(40, 4, 1, 0, 'empty', 'DEV', '#', '#', 1),
-(42, 10, 2, 40, 'fas fa-users-cog', 'User', '#', '1', 1),
-(43, 11, 3, 42, 'fas fa-angle-double-right', 'Users', 'users', '1', 1),
-(44, 12, 3, 42, 'fas fa-angle-double-right', 'Groups', 'groups', '2', 1),
-(89, 8, 2, 40, 'fas fa-th-list', 'Menu Type', 'menu_type', 'menu_type', 1),
+(4, 12, 2, 40, 'fas fa-table', 'CRUD Generator', 'crudbuilder', '1', 1),
+(8, 10, 2, 40, 'fas fa-bars', 'Menu', 'cms/menu/side-menu', 'navMenu', 1),
+(40, 7, 1, 0, 'empty', 'DEV', '#', '#', 1),
+(42, 4, 1, 0, 'fas fa-users-cog', 'User', '#', '1', 1),
+(43, 5, 2, 42, 'fas fa-angle-double-right', 'Users', 'users', '1', 1),
+(44, 6, 2, 42, 'fas fa-angle-double-right', 'Groups', 'groups', '2', 1),
+(89, 11, 2, 40, 'fas fa-th-list', 'Menu Type', 'menu_type', 'menu_type', 1),
 (92, 2, 1, 0, 'empty', 'MASTER DATA', '#', 'masterdata', 1),
-(107, 5, 2, 40, 'fas fa-cog', 'Setting', 'setting', 'setting', 1),
+(107, 8, 2, 40, 'fas fa-cog', 'Setting', 'setting', 'setting', 1),
 (108, 3, 2, 92, 'fab fa-affiliatetheme', 'Mahasiswa', 'mahasiswa', 'mahasiswa', 1),
-(109, 6, 2, 40, 'fas fa-align-justify', 'Frontend Menu', 'frontend_menu', 'Frontend Menu', 1);
+(109, 9, 2, 40, 'fas fa-align-justify', 'Frontend Menu', 'frontend_menu', 'Frontend Menu', 1);
 
 -- --------------------------------------------------------
 
@@ -279,8 +279,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `password`, `email`, `active`, `first_name`, `last_name`, `phone`, `image`) VALUES
-(1, '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', 'admin@muhakbar.com', 1, 'Akbar', 'Admin', '0', 'akbr_pp_2.jpg'),
-(2, '$2y$08$ipVAkJ.rjy35wARE9Px47eS2k.gz2FPYy14M019VFwLtBcUax2YJS', 'member@member.com', 1, 'Member', 'Apps', '0909090', 'default.jpg');
+(1, '$2y$08$B5Vmtuynwx0s6EqHO5/.WOt/LBq/RDZt3XbOhi1/7.cSbdRc.WKpe', 'admin@muhakbar.com', 1, 'Akbar', 'Admin', '2132132', 'akbr_pp_2.jpg'),
+(2, '$2y$08$ipVAkJ.rjy35wARE9Px47eS2k.gz2FPYy14M019VFwLtBcUax2YJS', 'member@member.com', 1, 'Member', 'Apps', '0909090', 'default.jpg'),
+(10, '$2y$08$VOexYeVPbaUJxo8LQV9J8euGsLys3nV1n9J5WIzUmFy7mLtlMVyRG', 'coba@gmail.com', 1, 'coba', '1', '123', 'default.jpg'),
+(11, '$2y$08$dOmjAzvDIdZqqrQ8cywKMeDXAR.5SecJZc.Bp4NwpJzFURP.mr9PG', 'xx@xx.com', 1, 'x', 'AKBAR', '077788778', 'Web_capture_9-6-2022_163744_web_whatsapp_com.jpg');
 
 -- --------------------------------------------------------
 
@@ -300,7 +302,9 @@ CREATE TABLE `users_groups` (
 
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (3, 1, 1),
-(31, 2, 2);
+(31, 2, 2),
+(32, 10, 1),
+(35, 11, 2);
 
 --
 -- Indexes for dumped tables
@@ -414,13 +418,13 @@ ALTER TABLE `setting`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- Constraints for dumped tables
